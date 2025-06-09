@@ -1,11 +1,11 @@
 import styles from "./styles";
 
-function Dashboard() {
+function Home() {
   return (
     <div style={styles.container} >
-      <h1 style={styles.header}>Dashboard</h1>
+      <h1 style={styles.header}>Home</h1>
     </div>
   );
 };
 
-export default Dashboard;
+export default Home;
