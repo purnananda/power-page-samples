@@ -1,13 +1,26 @@
 import React from 'react';
+import { FluentProvider, webLightTheme, makeStyles, shorthands, tokens } from "@fluentui/react-components";
+
 import Dashboard from './components/dashboard';
-import Home from './components/home';
+
+const useStyles = makeStyles({
+  mainContainer: {
+    width: '1140px', // Set your desired width here
+    margin: '0 auto', // Center the container
+    ...shorthands.padding('24px'),
+    backgroundColor: tokens.colorNeutralBackground1,
+    minHeight: '100vh',
+  },
+});
 
 function App() {
+  const styles = useStyles();
   return (
-    <div className="App">
-      <Home />
-      <h3>Welcome to app page.</h3>
-    </div>
+    <FluentProvider theme={webLightTheme}>
+      <div className={styles.mainContainer}>
+        <Dashboard />
+      </div>
+    </FluentProvider>
   );
 }
 
