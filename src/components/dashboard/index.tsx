@@ -24,12 +24,14 @@ import {
   HorizontalBarChartVariant,
 } from '@fluentui/react-charts';
 
-import { Info20Regular } from "@fluentui/react-icons";
+import { Info20Regular, CurrencyDollarEuroRegular } from "@fluentui/react-icons";
 
 // Styles
 const useStyles = makeStyles({
-  container: {
-    minHeight: '100vh',
+  main: {
+    width: 'calc(100% - 32px)',
+    marginLeft: '16px',
+    marginRight: '16px',
   },
   header: {
     paddingTop: '16px',
@@ -43,8 +45,8 @@ const useStyles = makeStyles({
   },
   wrapper: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(3, 376px)',
-    gap: '24px',
+    gridTemplateColumns: 'repeat(3, 370px)',
+    gap: '16px',
   },
   box: {
     fontSize: '150%',
@@ -73,6 +75,13 @@ const useStyles = makeStyles({
     marginBottom: '16px',
     backgroundColor: getColorFromToken(tokens.colorNeutralBackground3),
   },
+  stackNumbersTransparent: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    padding: '8px',
+    marginBottom: '16px',
+  },
+  icon48: { fontSize: "48px" },
 });
 
 // Chart Data
@@ -137,51 +146,41 @@ const inventoryBreakdownData = [
 
 const absoluteScaleData = [
   {
-    chartTitle: 'one',
+    chartTitle: 'Supplier A',
     chartData: [
       {
-        legend: 'one',
-        horizontalBarChartdata: { x: 1543, total: 15000 },
+        legend: 'Supplier A',
+        horizontalBarChartdata: { x: 70, total: 100 },
         color: getColorFromToken(DataVizPalette.color23),
       },
     ],
   },
   {
-    chartTitle: 'two',
+    chartTitle: 'Supplier B',
     chartData: [
       {
-        legend: 'two',
-        horizontalBarChartdata: { x: 800, total: 15000 },
+        legend: 'Supplier B',
+        horizontalBarChartdata: { x: 80, total: 100 },
         color: getColorFromToken(DataVizPalette.color23),
       },
     ],
   },
   {
-    chartTitle: 'three',
+    chartTitle: 'Supplier C',
     chartData: [
       {
-        legend: 'three',
-        horizontalBarChartdata: { x: 8888, total: 15000 },
+        legend: 'Supplier C',
+        horizontalBarChartdata: { x: 95, total: 100 },
         color: getColorFromToken(DataVizPalette.color23),
       },
     ],
   },
   {
-    chartTitle: 'four',
+    chartTitle: 'Supplier D',
     chartData: [
       {
-        legend: 'four',
-        horizontalBarChartdata: { x: 15888, total: 15000 },
-        color: getColorFromToken(DataVizPalette.color23),
-      },
-    ],
-  },
-  {
-    chartTitle: 'five',
-    chartData: [
-      {
-        legend: 'five',
-        horizontalBarChartdata: { x: 11444, total: 15000 },
+        legend: 'Supplier D',
+        horizontalBarChartdata: { x: 60, total: 100 },
         color: getColorFromToken(DataVizPalette.color23),
       },
     ],
@@ -340,6 +339,7 @@ const Dashboard: React.FC = () => {
           />
         </div>
         <CardFooter className={styles.cardFooter}>
+          <Button appearance="outline">Action</Button>
         </CardFooter>
       </Card>
     </div>
@@ -361,16 +361,29 @@ const Dashboard: React.FC = () => {
             </Tooltip>
           } />
         <div className={styles.cardBody}>
-
+          <div className={styles.stackNumbersTransparent}>
+            <div>
+              <Title3>06/19</Title3>
+              <br />
+              <Body1>next payday</Body1>
+            </div>
+            <div>
+              <CurrencyDollarEuroRegular
+                className={styles.icon48}
+                aria-label="SendRegular size 48"
+              />
+            </div>
+          </div>
         </div>
         <CardFooter className={styles.cardFooter}>
+          <Button appearance="outline">Action</Button>
         </CardFooter>
       </Card>
     </div>
   );
 
   return (
-    <div className={styles.container}>
+    <div className={styles.main}>
       <div className={styles.header}>
         <div className={styles.headerTitle}>
           <Title1>Dashboard</Title1>

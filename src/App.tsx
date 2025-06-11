@@ -1,23 +1,11 @@
 import React from 'react';
-import { makeStyles } from "@fluentui/react-components";
-
 import Dashboard from './components/dashboard';
-
-const useStyles = makeStyles({
-  mainContainer: {
-    width: '1176px',
-    margin: '0 auto',
-    paddingTop: '16px',
-    paddingBottom: '24px',
-    minHeight: '100vh',
-    alignItems: 'center',
-  },
-});
+import { useResponsiveLayoutStyles } from './site/responsive-layout-styles';
 
 function App() {
-  const styles = useStyles();
+  const styles = useResponsiveLayoutStyles();
   return (
-    <div className={styles.mainContainer}>
+    <div className={styles.container}>
       <Dashboard />
     </div>
   );
