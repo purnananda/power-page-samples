@@ -32,7 +32,8 @@ const useStyles = makeStyles({
     minHeight: '100vh',
   },
   header: {
-    padding: '16px',
+    paddingTop: '16px',
+    paddingBottom: '16px',
   },
   headerTitle: {
     marginBottom: '8px',
@@ -42,11 +43,10 @@ const useStyles = makeStyles({
   },
   wrapper: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(3, 380px)',
-    gap: '10px',
+    gridTemplateColumns: 'repeat(3, 376px)',
+    gap: '24px',
   },
   box: {
-    padding: '16px',
     fontSize: '150%',
     alignItems: 'center',
   },
@@ -57,7 +57,6 @@ const useStyles = makeStyles({
   box5: { gridColumn: 3, gridRow: 2 },
   card: {
     width: '100%',
-    // maxWidth: '100%',
     height: '100%',
   },
   cardBody: {
