@@ -320,7 +320,6 @@ const Feature: React.FC = () => {
                         Subtitle for the feature.
                     </Subtitle2>
                 </div>
-                <Divider />
             </div>
 
             <div className={`${styles.wrapper} ${styles.featuresContainer}`}>

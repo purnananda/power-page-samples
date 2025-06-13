@@ -9,12 +9,15 @@ export const useResponsiveLayoutStyles = makeStyles({
         paddingTop: '16px',
         paddingBottom: '24px',
 
-        minHeight: '100vh',
+        // minHeight: '100vh',
         alignItems: 'center',
-        '@media (min-width: 1176px)': {
-            width: '1176px',
-            maxWidth: '1176px',
-        },
+        flex: 1, 
+        background: '#faf9f8', 
+        overflow: 'auto',
+        // '@media (min-width: 1176px)': {
+        //     width: '1176px',
+        //     maxWidth: '1176px',
+        // },
     },
     main: {
         width: 'calc(100% - 32px)',

@@ -12,7 +12,6 @@ import {
   Body1,
   tokens,
   Tooltip,
-  Divider,
 } from '@fluentui/react-components';
 import {
   DonutChart,
@@ -393,7 +392,6 @@ const Dashboard: React.FC = () => {
             Monitor real-time inventory levels, track stock status across categories, and identify key trends to ensure efficient management and timely restocking.
           </Subtitle2>
         </div>
-        <Divider />
       </div>
 
       <div className={styles.wrapper}>

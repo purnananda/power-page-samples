@@ -3,11 +3,9 @@ import {
   makeStyles,
   Title1,
   Subtitle2,
-  Divider,
   Card,
   CardHeader,
   CardPreview,
-  Text,
   Body1,
   Caption1,
   TableColumnDefinition,
@@ -22,17 +20,11 @@ import {
   DataGridBody,
   DataGridCell,
   PresenceBadgeStatus,
-  Button,
-  Dropdown,
-  Option,
-  Input,
   useId,
   tokens,
   Title3,
 } from '@fluentui/react-components';
 import {
-  AddRegular,
-  ArrowSyncRegular,
   DocumentPdfRegular,
   DocumentRegular,
   EditRegular,
@@ -353,7 +345,6 @@ const Home: React.FC = () => {
             Pellentesque blandit non dolor eu imperdiet. Sed blandit ex magna, ac interdum libero consequat in.
           </Subtitle2>
         </div>
-        <Divider />
       </div>
 
       <div className={styles.sectionContainer}>
