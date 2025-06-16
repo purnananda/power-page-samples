@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>    
       <FluentProvider theme={webLightTheme}>
-        <Container maxWidth='xl' style={{backgroundColor: tokens.colorNeutralBackground3, paddingLeft: '0'}}>
+        <Container maxWidth='xl' style={{backgroundColor: tokens.colorNeutralBackground3, height: '100vh'}}>
           <App />
         </Container>
       </FluentProvider>

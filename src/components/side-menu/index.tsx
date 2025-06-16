@@ -23,7 +23,8 @@ const FeatureIcon = bundleIcon(AppsAddInOff20Filled, AppsAddInOff20Regular);
 const iconArray: Record<MenuKey, JSX.Element> = {
     home: <HomeIcon />,
     dashboard: <DashboardIcon />,
-    feature: <FeatureIcon />
+    feature: <FeatureIcon />,
+    samples: <HomeIcon />
 };
 
 const SideMenu: React.FC<SideMenuProps> = ({ selected, onSelect }) => {
