@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import Container from '@mui/material/Container';
 import { FluentProvider, webLightTheme, tokens } from "@fluentui/react-components";
 import App from './app';
 
@@ -8,11 +9,11 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <React.StrictMode>
-    <FluentProvider theme={webLightTheme}>
-      <div style={{backgroundColor: tokens.colorNeutralBackground3, margin: '0', padding: '0'}}>
-        <App />
-      </div>
-    </FluentProvider>    
+  <React.StrictMode>    
+      <FluentProvider theme={webLightTheme}>
+        <Container maxWidth='xl' style={{backgroundColor: tokens.colorNeutralBackground3, paddingLeft: '0'}}>
+          <App />
+        </Container>
+      </FluentProvider>
   </React.StrictMode>
 );

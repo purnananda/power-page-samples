@@ -38,6 +38,7 @@ import {
     PeopleRegular,
     VideoRegular,
 } from '@fluentui/react-icons';
+import { Box, Grid } from '@mui/material';
 
 // Styles
 const useStyles = makeStyles({
@@ -54,11 +55,6 @@ const useStyles = makeStyles({
     headerSubTitle: {
         marginBottom: '8px',
     },
-    wrapper: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(4, 275px)',
-        gap: '16px',
-    },
     box: {
         fontSize: '150%',
         alignItems: 'center',
@@ -71,7 +67,6 @@ const useStyles = makeStyles({
         marginTop: '16px',
     },
     dataGridContainer: {
-        width: '100%',
         marginTop: '48px',
     },
     refreshButton: {
@@ -154,6 +149,28 @@ type Item = {
     lastUpdated: LastUpdatedCell;
     lastUpdate: LastUpdateCell;
 };
+const features = [
+    {
+        image: 'feature1.png',
+        name: 'Feature One',
+        desc: 'Description for feature one.',
+    },
+    {
+        image: 'feature2.png',
+        name: 'Feature Two',
+        desc: 'Description for feature two.',
+    },
+    {
+        image: 'feature3.png',
+        name: 'Feature Three',
+        desc: 'Description for feature three.',
+    },
+    {
+        image: 'feature4.png',
+        name: 'Feature Four',
+        desc: 'Description for feature four.',
+    },
+]
 
 const items: Item[] = [
     {
@@ -262,32 +279,32 @@ const DataGridControl: React.FC<{
     sortState,
     onSortChange,
 }) => (
-    <DataGrid
-        items={gridItems}
-        columns={gridColumns}
-        sortable
-        sortState={sortState}
-        onSortChange={onSortChange}
-        style={{ minWidth: "500px" }}
-    >
-        <DataGridHeader>
-            <DataGridRow>
-                {({ renderHeaderCell }) => (
-                    <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
-                )}
-            </DataGridRow>
-        </DataGridHeader>
-        <DataGridBody<Item>>
-            {({ item, rowId }) => (
-                <DataGridRow<Item> key={rowId}>
-                    {({ renderCell }) => (
-                        <DataGridCell>{renderCell(item)}</DataGridCell>
+        <DataGrid
+            items={gridItems}
+            columns={gridColumns}
+            sortable
+            sortState={sortState}
+            onSortChange={onSortChange}
+            style={{ minWidth: "500px" }}
+        >
+            <DataGridHeader>
+                <DataGridRow>
+                    {({ renderHeaderCell }) => (
+                        <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
                     )}
                 </DataGridRow>
-            )}
-        </DataGridBody>
-    </DataGrid>
-);
+            </DataGridHeader>
+            <DataGridBody<Item>>
+                {({ item, rowId }) => (
+                    <DataGridRow<Item> key={rowId}>
+                        {({ renderCell }) => (
+                            <DataGridCell>{renderCell(item)}</DataGridCell>
+                        )}
+                    </DataGridRow>
+                )}
+            </DataGridBody>
+        </DataGrid>
+    );
 
 const Feature: React.FC = () => {
     const styles = useStyles();
@@ -322,61 +339,57 @@ const Feature: React.FC = () => {
                 </div>
             </div>
 
-            <div className={`${styles.wrapper} ${styles.featuresContainer}`}>
-                <FeatureCard
-                    imageSrc={resolveAsset("feature1.png")}
-                    featureName="Feature One"
-                    featureDescription="Description for feature one."
-                />
-                <FeatureCard
-                    imageSrc={resolveAsset("feature2.png")}
-                    featureName="Feature Two"
-                    featureDescription="Description for feature two."
-                />
-                <FeatureCard
-                    imageSrc={resolveAsset("feature3.png")}
-                    featureName="Feature Three"
-                    featureDescription="Description for feature three."
-                />
-                <FeatureCard
-                    imageSrc={resolveAsset("feature4.png")}
-                    featureName="Feature Four"
-                    featureDescription="Description for feature four."
-                />
-            </div>
+            <Grid container columns={12} spacing={2}>
+                {features.map((feature, index) => (
+                    <Grid key={index} size={{ xs: 12, sm: 12, md: 6, lg: 3 }} >
+                        <FeatureCard
+                            imageSrc={resolveAsset(feature.image)}
+                            featureName={feature.name}
+                            featureDescription={feature.desc}
+                        />
+                    </Grid>
+                ))}
+            </Grid>
 
-            <div className={styles.dataGridContainer}>
-                <Card className={styles.card} size="large">
-                    <div>
-                        <div className={styles.actionsParentRow}>
-                            <div>
+            <Grid container columns={12} spacing={2} className={styles.dataGridContainer}>
+                <Grid size={12}>
+                    <Card className={styles.card} size="large">
+                        <Grid container columns={12} spacing={2}>
+                            <Grid size={{ xs: 12, sm: 12, md: 5 }}>
                                 <Button appearance="primary" icon={<AddRegular />}>New</Button>
                                 <Button appearance="outline" icon={<ArrowSyncRegular />} className={styles.refreshButton}>Refresh</Button>
-                            </div>
-                            <div className={styles.actionsChildRow}>
-                                <div className={styles.itemsCountCell}>
-                                    <Text>
-                                        <b>{items.length}</b>
-                                    </Text>
-                                    <Caption1> items</Caption1>
+                            </Grid>
+                            <Grid size={{ xs: 12, sm: 12, md: 7 }}>
+                                <div className={styles.actionsChildRow}>
+                                    <div className={styles.itemsCountCell}>
+                                        <Text>
+                                            <b>{items.length}</b>
+                                        </Text>
+                                        <Caption1> items</Caption1>
+                                    </div>
+                                    <div className={styles.categoryCell}>
+                                        <Dropdown id="dropdown-id" placeholder="Select category" size="medium" appearance="filled-darker">
+                                            <Option>All</Option>
+                                            <Option>Option 1</Option>
+                                            <Option>Option 2</Option>
+                                        </Dropdown>
+                                    </div>
+                                    <div>
+                                        <Input id={txtSearchId} placeholder='Search' />
+                                    </div>
                                 </div>
-                                <div className={styles.categoryCell}>
-                                    <Dropdown id="dropdown-id" placeholder="Select category" size="medium" appearance="filled-darker">
-                                        <Option>All</Option>
-                                        <Option>Option 1</Option>
-                                        <Option>Option 2</Option>
-                                    </Dropdown>
-                                </div>
-                                <div>
-                                    <Input id={txtSearchId} placeholder='Search' />
-                                </div>
-                            </div>
-                        </div>
+                            </Grid>
+                        </Grid>
                         <Divider />
-                    </div>
-                    <DataGridControl sortState={sortState} onSortChange={onSortChange} />
-                </Card>
-            </div>
+                        <Grid container columns={12} spacing={2}>
+                            <Grid size={12}>
+                                <DataGridControl sortState={sortState} onSortChange={onSortChange} />
+                            </Grid>
+                        </Grid>
+                    </Card>
+                    <Divider />
+                </Grid>
+            </Grid>
         </div>
     );
 };

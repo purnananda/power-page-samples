@@ -33,6 +33,7 @@ import {
   PeopleRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
+import { Grid } from '@mui/material';
 
 // Styles
 const useStyles = makeStyles({
@@ -50,15 +51,9 @@ const useStyles = makeStyles({
     marginBottom: '8px',
   },
   wrapper: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(4, 275px)',
-    gap: '16px',
     marginTop: '16px',
   },
   resourceswrapper: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, 370px)',
-    gap: '16px',
     marginTop: '16px',
   },
   gridContainer: {
@@ -74,7 +69,7 @@ const useStyles = makeStyles({
   },
   sectionContainer: {
     width: '100%',
-    marginTop: '48px',
+    marginTop: '40px',
   },
   lastSection: {
     marginBottom: '16px',
@@ -334,6 +329,48 @@ const Home: React.FC = () => {
     setSortState(nextSortState);
   };
 
+  // Feature and resource data arrays for easier mapping
+  const features = [
+    {
+      image: "HomeFeature1.png",
+      name: "Feature One",
+      desc: "Description for feature one.",
+    },
+    {
+      image: "HomeFeature2.png",
+      name: "Feature Two",
+      desc: "Description for feature two.",
+    },
+    {
+      image: "HomeFeature3.png",
+      name: "Feature Three",
+      desc: "Description for feature three.",
+    },
+    {
+      image: "HomeFeature4.png",
+      name: "Feature Four",
+      desc: "Description for feature four.",
+    },
+  ];
+
+  const resources = [
+    {
+      image: "HomeResource1.png",
+      name: "Documentation",
+      desc: "Discover how the code review work.",
+    },
+    {
+      image: "HomeResource2.png",
+      name: "Quick Start",
+      desc: "Create a review for your solution.",
+    },
+    {
+      image: "HomeResource3.png",
+      name: "Coming Soon",
+      desc: "See the release plan.",
+    },
+  ];
+
   return (
     <div className={styles.main}>
       <div className={styles.header}>
@@ -349,58 +386,45 @@ const Home: React.FC = () => {
 
       <div className={styles.sectionContainer}>
         <Title3>Features</Title3>
-        <div className={styles.wrapper}>
-          <FeatureCard
-            imageSrc={resolveAsset("HomeFeature1.png")}
-            featureName="Feature One"
-            featureDescription="Description for feature one."
-          />
-          <FeatureCard
-            imageSrc={resolveAsset("HomeFeature2.png")}
-            featureName="Feature Two"
-            featureDescription="Description for feature two."
-          />
-          <FeatureCard
-            imageSrc={resolveAsset("HomeFeature3.png")}
-            featureName="Feature Three"
-            featureDescription="Description for feature three."
-          />
-          <FeatureCard
-            imageSrc={resolveAsset("HomeFeature4.png")}
-            featureName="Feature Four"
-            featureDescription="Description for feature four."
-          />
-        </div>
+        <Grid container columns={12} spacing={2} className={styles.wrapper}>
+          {features.map((feature, idx) => (
+            <Grid size={{ xs: 12, sm: 12, md: 6, lg: 3 }} key={feature.name}>
+              <FeatureCard
+                imageSrc={resolveAsset(feature.image)}
+                featureName={feature.name}
+                featureDescription={feature.desc}
+              />
+            </Grid>
+          ))}
+        </Grid>
       </div>
 
       <div className={styles.sectionContainer}>
         <Title3>Latest</Title3>
         <div className={styles.gridContainer}>
-          <Card className={styles.card} size="large">
-            <DataGridControl sortState={sortState} onSortChange={onSortChange} />
-          </Card>
+          <Grid container columns={12} spacing={2}>
+            <Grid size={12}>
+              <Card className={styles.card} size="large">
+                <DataGridControl sortState={sortState} onSortChange={onSortChange} />
+              </Card>
+            </Grid>
+          </Grid>
         </div>
       </div>
 
       <div className={`${styles.sectionContainer} ${styles.lastSection}`}>
         <Title3>Learning Resources</Title3>
-        <div className={styles.resourceswrapper}>
-          <ResourceCard
-            imageSrc={resolveAsset("HomeResource1.png")}
-            resourceName="Documentation"
-            resourceDescription="Discover how the code review work."
-          />
-          <ResourceCard
-            imageSrc={resolveAsset("HomeResource2.png")}
-            resourceName="Quick Start"
-            resourceDescription="Create a review for your solution."
-          />
-          <ResourceCard
-            imageSrc={resolveAsset("HomeResource3.png")}
-            resourceName="Coming Soon"
-            resourceDescription="See the release plan."
-          />
-        </div>
+        <Grid container columns={12} spacing={2} className={styles.resourceswrapper}>
+          {resources.map((resource) => (
+            <Grid size={{ xs: 12, sm: 12, md: 6, lg: 4 }} key={resource.name}>
+              <ResourceCard
+                imageSrc={resolveAsset(resource.image)}
+                resourceName={resource.name}
+                resourceDescription={resource.desc}
+              />
+            </Grid>
+          ))}
+        </Grid>
       </div>
     </div>
   );

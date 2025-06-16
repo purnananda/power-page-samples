@@ -6,7 +6,7 @@ import { makeStyles, Title2,  Tooltip } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   nav: {
-    minWidth: "200px",
+    width: "100%",
     height: '100vh',
   }
 });

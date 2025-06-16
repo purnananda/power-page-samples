@@ -24,6 +24,7 @@ import {
 } from '@fluentui/react-charts';
 
 import { Info20Regular, CurrencyDollarEuroRegular } from "@fluentui/react-icons";
+import { Grid } from '@mui/material';
 
 // Styles
 const useStyles = makeStyles({
@@ -42,11 +43,6 @@ const useStyles = makeStyles({
   headerSubTitle: {
     marginBottom: '8px',
   },
-  wrapper: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, 370px)',
-    gap: '16px',
-  },
   box: {
     fontSize: '150%',
     alignItems: 'center',
@@ -59,6 +55,7 @@ const useStyles = makeStyles({
   card: {
     width: '100%',
     height: '100%',
+    minHeight: '328px',
   },
   cardBody: {
     minHeight: '200px',
@@ -394,13 +391,23 @@ const Dashboard: React.FC = () => {
         </div>
       </div>
 
-      <div className={styles.wrapper}>
-        <Card1 />
-        <Card2 />
-        <Card3 />
-        <Card4 />
-        <Card5 />
-      </div>
+      <Grid container columns={12} spacing={2}>
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 4 }}>
+          <Card1 />
+        </Grid>
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 4 }}>
+          <Card2 />
+        </Grid>
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 4 }}>
+          <Card3 />
+        </Grid>
+        <Grid size={{ xs: 12, sm: 12, md: 12, lg: 8 }}>
+          <Card4 />
+        </Grid>
+        <Grid size={{ xs: 12, sm: 12, md: 6, lg: 4 }}>
+          <Card5 />
+        </Grid>
+      </Grid>
     </div>
   );
 };
